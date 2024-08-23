@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="todo.TodoMapper">
+	<!-- mapper의 namespace는 Mapper 인터페이스와연동할때 사용 -->
+	<select id="selectTodoList" resultType="todo.TodoVO">
+		SELECT
+			T_NO,
+			TITLE,
+			WRITER,
+			COMPLETE,
+			DUE_DATE
+		FROM
+			TODO
+	</select>
+	<select id="selectTodo" parameterType="int" resultType="todo.TodoVO">
+			SELECT
+				T_NO,
+				TITLE,
+				WRITER,
+				COMPLETE,
+				DUE_DATE
+			FROM
+				TODO
+			WHERE
+				T_NO = #{tNo}
+	</select>
+	<insert id="insertTodo" parameterType="todo.TodoVO">
+	insert into todo
+					(title,writer,due_date)
+					values
+					(#{title},#{writer},#{dueDate})
+	</insert>
+	<update id="updateTodo" parameterType="todo.TodoVO">
+	update
+		todo
+		set
+		title=#{title} ,
+		writer =#{writer} ,
+		due_date = #{dueDate}
+	where
+		t_no = #{tNo}
+	</update>
+	<delete id="deleteTodo" parameterType="int">
+	delete from
+		todo
+	where
+		t_no = #{tNo}
+	</delete>
+	<update id="updateComplete" parameterType="todo.TodoVO">
+	update
+		todo
+	set
+		complete = #{complete}
+	where
+		t_no =#{tNo}
+	</update>
+	<select id="selectComplete" resultType="todo.TodoVO" parameterType="int">
+		SELECT T_NO, COMPLETE FROM TODO WHERE T_NO = #{tNo}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

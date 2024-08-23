@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	<display-name>BasicWeb</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+	</welcome-file-list>
+
+	<listener>
+		<display-name>myBatisLoader</display-name>
+		<listener-class>common.MybatisLoaderListener</listener-class>
+	</listener>
+
+	<!-- 필터 생성 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>common.CharacterEncodingFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!--서블릿파일 정보 -->
+	<servlet>
+		<servlet-name>exercise</servlet-name>
+		<servlet-class>chapter04.ExerciseServlet</servlet-class>
+	</servlet>
+	<!--서블릿파일과 연결된 url정보 -->
+	<servlet-mapping>
+		<servlet-name>exercise</servlet-name>
+		<url-pattern>/ex</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>mypage</servlet-name>
+		<servlet-class>chapter04.MypageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mypage</servlet-name>
+		<url-pattern>/mypage</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>memberList</servlet-name>
+		<servlet-class>chapter05.memberListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>memberList</servlet-name>
+		<url-pattern>/member/list</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>memberInsert</servlet-name>
+		<servlet-class>chapter05.MemberInsertServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>memberInsert</servlet-name>
+		<url-pattern>/member/insert</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>memberDetail</servlet-name>
+		<servlet-class>chapter05.memberDetailSerlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>memberDetail</servlet-name>
+		<url-pattern>/member/detail</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>memberDelete</servlet-name>
+		<servlet-class>chapter05.MemberDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>memberDelete</servlet-name>
+		<url-pattern>/member/delete</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>memberUpdate</servlet-name>
+		<servlet-class>chapter05.MemberUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>memberUpdate</servlet-name>
+		<url-pattern>/member/Update</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>StudentList</servlet-name>
+		<servlet-class>student.StudentListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StudentList</servlet-name>
+		<url-pattern>/list</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>StudentInsert</servlet-name>
+		<servlet-class>student.StudentinsertServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StudentInsert</servlet-name>
+		<url-pattern>/Student/new</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>StudentUpdate</servlet-name>
+		<servlet-class>student.StudentUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StudentUpdate</servlet-name>
+		<url-pattern>/Student/update</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>StudentDelete</servlet-name>
+		<servlet-class>student.studentDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StudentDelete</servlet-name>
+		<url-pattern>/Student/delete</url-pattern>
+	</servlet-mapping>
+
+	<!-- 이런식으로 계속 만들면 하나를 만들때마다 8줄을 작성해야되기 때문에 너무 힘듦 그래서 다른방식을 시작함 @WebServlet("/todo/insert") 
+		//이렇게 하면 서블릿등록한것과 똑같음 이렇게 서블릿등록한 파일에 요롷게 적으면 됨. 이제 여기서 작성안함 -->
+
+
+
+
+
+
+
+</web-app>
